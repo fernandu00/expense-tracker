@@ -35,13 +35,13 @@ function App() {
 
 
   useEffect(()=> {
-      filteredIcome.map((item) => {
+      filteredIcome.forEach((item) => {
           totalIcome += parseFloat(item.amount)
           setIncome(totalIcome)
           
       })
       
-      filteredExpense.map((item) => {
+      filteredExpense.forEach((item) => {
           totalExpense+= parseFloat(item.amount)
           setexpense(totalExpense)
       })
