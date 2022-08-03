@@ -4,7 +4,7 @@ import Balance from './components/Balance';
 import Header from './components/Header';
 import IncomeExpenses from './components/IncomeExpenses';
 import TransactionList from './components/TransactionList';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 function App() {
   const [input, setInput] = useState('')
@@ -19,33 +19,56 @@ function App() {
   let filteredIcome = transactions.filter(transaction => transaction.amount > 0)
   let filteredExpense = transactions.filter(transaction => transaction.amount < 0)
   
-  
-  
+  // const handleIncome = () => {
+  //   let totalIcome = 0
+  //   filteredIcome.forEach((item) => {
+  //     totalIcome += parseFloat(item.amount)
+  //     setIncome(totalIcome)
+      
+  // })
+  // }
 
-  
-
-  
-  useEffect(()=> {
+  const handleIncome = useCallback(() => {
     let totalIcome = 0
     filteredIcome.forEach((item) => {
       totalIcome += parseFloat(item.amount)
       setIncome(totalIcome)
-      
-  })
+    })},[filteredIcome])
+
+
+    const handleExpense = useCallback(() => {
       filteredExpense.forEach((item) => {
         let totalExpense = 0
           totalExpense+= parseFloat(item.amount)
           setexpense(totalExpense)
       })
+    },[filteredExpense])
+    
 
-  },[income, expense,filteredIcome, filteredExpense, transactions, balance, setTransactions])
+  // const handleExpense = () => {
+  //   filteredExpense.forEach((item) => {
+  //     let totalExpense = 0
+  //       totalExpense+= parseFloat(item.amount)
+  //       setexpense(totalExpense)
+  //   })
+  // }
   
-  
-  useEffect(()=> {
+  const handleBalance = useCallback(() => {
     let final = parseFloat(income + expense).toFixed(2)
     setBalance(final)
+  },[income, expense])
+  
+  // const handleBalance = () => {
+  //   let final = parseFloat(income + expense).toFixed(2)
+  //   setBalance(final)
+  // }
+
+  useEffect(()=> {
+    handleIncome()
+    handleExpense()
+    handleBalance()
     
-},[income, expense, balance, transactions, setBalance, setTransactions])
+},[income, expense, balance, transactions, setBalance, setTransactions, handleBalance, handleIncome, handleExpense])
 
 
 
@@ -56,6 +79,7 @@ const removeTransaction = (transaction) => {
   console.log(newTransactions)
   setTransactions(newTransactions)
   console.log(transactions)
+  handleBalance()
   
 }
 
