@@ -9,11 +9,7 @@ import { useState, useEffect } from 'react';
 function App() {
   const [input, setInput] = useState('')
   const [amount, setAmount] = useState('')
-  const [transactions, setTransactions] = useState([
-    {
-      
-    }
-  ])
+  const [transactions, setTransactions] = useState([])
 
   const [income, setIncome] = useState(0)
   const [expense, setexpense] = useState(0)
@@ -23,45 +19,49 @@ function App() {
   let filteredIcome = transactions.filter(transaction => transaction.amount > 0)
   let filteredExpense = transactions.filter(transaction => transaction.amount < 0)
   
-  let totalIcome = 0
-  let totalExpense = 0
+  
+  
 
-  const removeTransaction = (transaction) => {
-    let removedTransactions = transactions.filter((item => item.id !== transaction.id))
-    setTransactions(removedTransactions)
-    console.log(transactions)
-    
-  }
+  
 
-
+  
   useEffect(()=> {
-      filteredIcome.forEach((item) => {
-          totalIcome += parseFloat(item.amount)
-          setIncome(totalIcome)
-          
-      })
+    let totalIcome = 0
+    filteredIcome.forEach((item) => {
+      totalIcome += parseFloat(item.amount)
+      setIncome(totalIcome)
       
+  })
       filteredExpense.forEach((item) => {
+        let totalExpense = 0
           totalExpense+= parseFloat(item.amount)
           setexpense(totalExpense)
       })
 
-  },[income, filteredIcome, filteredExpense, transactions, balance])
+  },[income, expense,filteredIcome, filteredExpense, transactions, balance, setTransactions])
   
   
   useEffect(()=> {
     let final = parseFloat(income + expense).toFixed(2)
     setBalance(final)
     
-},[income, expense, balance, transactions, setBalance])
+},[income, expense, balance, transactions, setBalance, setTransactions])
 
 
 
 
+const removeTransaction = (transaction) => {
+ 
+  let newTransactions = transactions.filter(filtered => (filtered.id !== transaction.id))
+  console.log(newTransactions)
+  setTransactions(newTransactions)
+  console.log(transactions)
+  
+}
 
   return (
     <>
-    {/* <h1>{transactions.map((tr) => <p>{tr.name}</p>)}</h1> */}
+    
     <Header/>
     <Balance balance={balance} setBalance={setBalance} income={income} expense={expense}/>
     <IncomeExpenses transactions={transactions} income={income} expense={expense} setIncome={setIncome} setexpense={setexpense} />
