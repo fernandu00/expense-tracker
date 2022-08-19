@@ -1,19 +1,37 @@
-import React from 'react'
-import './TransactionList.css'
-const TransactionList = ({transactions, removeTransaction, balance, income}) => {
+import React from "react";
+import "./TransactionList.css";
+const TransactionList = ({
+  transactions,
+  removeTransaction,
+  balance,
+  income,
+}) => {
   return (
-    <div className='transaction-container'>
-    
-        <h3>History</h3>
-        <ul className='transactions'>
-            {transactions.map((transaction) => (
-                <li key={transaction.id} onClick={() => removeTransaction(transaction)} className={transaction.amount <= 0 ?  'transaction-minus' : transaction.amount > 0 ? 'transaction-plus' : 'none'}>{transaction.name} <span key={transaction.name}>{transaction.amount}</span></li>
-            ))}
-            {/* <li className='transaction-plus'> Cash <span>+ 200.00</span></li>
-            <li className='transaction-minus'> Bill <span>- 200.00</span></li> */}
-        </ul>
+    <div className="transaction-container">
+      <h3>History</h3>
+      <div className="transactions">
+        {transactions.length > 0 &&
+          transactions.map((transaction) => {
+            const { id, name, amount } = transaction;
+            return (
+              <article
+                key={id}
+                onClick={() => removeTransaction(id)}
+                className={
+                  amount <= 0
+                    ? "transaction-minus"
+                    : amount > 0
+                    ? "transaction-plus"
+                    : "none"
+                }
+              >
+                <p>{name}</p> <p>{amount}</p>
+              </article>
+            );
+          })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default TransactionList
+export default TransactionList;

@@ -1,37 +1,39 @@
-.transaction-container{
-margin-top: 2rem;
-min-width: 20vw;
+.transaction-container {
+  margin-top: 2rem;
+  min-width: 20vw;
 }
 
-.transaction-container h3{
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
+.transaction-container h3 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
 }
 
-.transactions{
-   list-style-type: none;
-   padding: 0;
-   
+.transactions {
+  padding: 0;
 }
 
-.transactions li{
-    padding: .5rem;
-    display: flex;
-    justify-content: space-between;
-    margin: .5rem 0;
-    box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    border-radius: .1rem;
-   
+.transactions article {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 0.1rem;
 }
 
-.transaction-plus{
-    border-right: 3px solid rgb(1, 253, 1);
-}
-.transaction-minus{
-    border-right: 3px solid rgb(255, 0, 0);
+.transactions p {
+  font-size: 1rem;
+  margin: 0;
 }
 
-.none{
-    display: none;
-    visibility: hidden;
+.transaction-plus {
+  border-right: 3px solid rgb(1, 253, 1);
+}
+.transaction-minus {
+  border-right: 3px solid rgb(255, 0, 0);
+}
+
+.none {
+  display: none;
+  visibility: hidden;
 }
