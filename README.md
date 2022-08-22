@@ -4,11 +4,11 @@ This is a simple expense tracker app built using ReactJs. In the app user can be
 
 ## Adding transaction screenshot
 
-![](/images/Expense Tracker.png)
+![](images/Expense Tracker.png)
 
 ## Transaction list screenshot
 
-![] (/images/Expense Tracker \_list.png)
+![] (images/Expense Tracker \_list.png)
 
 The user can also delete the transactions by clicking on them and the income, expense and total balance will recalculate.
 
