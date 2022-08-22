@@ -14,7 +14,7 @@ The user can also delete the transactions by clicking on them and the income, ex
 
 ## Deleting transactions example
 
-![](./images/Expense%20Tracker.mp4)
+![](./images/ezgif.com-gif-maker.gif)
 
 ## How it works
 
